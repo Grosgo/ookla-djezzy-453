@@ -114,3 +114,21 @@ http.createServer(app).listen(PORT, () => {
 http.createServer(legacy).listen(LEGACY_PORT, () => {
   console.log(`Legacy JSON : http://localhost:${LEGACY_PORT}/speedtest`);
 });
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+app.use(cors());
+
+// route par défaut
+app.get("/", (req, res) => {
+  res.send("🚀 Server is running on Back4App!");
+});
+
+// si tu as un frontend statique (HTML/CSS/JS dans un dossier public)
+app.use(express.static("public"));
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
+});
