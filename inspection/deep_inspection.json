@@ -1,0 +1,23 @@
+[
+  {
+    "file": "frontend/index.html",
+    "matches": {
+      "http_urls": [
+        "https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      ]
+    },
+    "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n  <title>5G Speed Test</title>\n  <link rel=\"icon\" type=\"image/gif\" href=\"images/favicon.png\">\n  <link rel=\"stylesheet\" href=\"style.css\" />\n  <link href=\"https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap\" rel=\"stylesheet\">\n</head>\n<body>\n  <div class=\"stats-overlay\" id=\"statsOverlay\">\n  <div class=\"stats-content\" id=\"statsContent\"></div>\n</div>\n\n  <div class=\"animated-bg\"></div>\n  <canvas id=\"galaxy-canvas\"></canvas>\n\n  <div class=\"gauge-container\">\n    <img src=\"images/gauge.png\" alt=\"Gauge\" class=\"gauge-base\" />\n    <img src=\"images/needle.png\" class=\"gauge-needle\" id=\"needle\" />\n   <!---- <img src=\"images/Dents.png\" class=\"gauge-dents\" id=\"gauge-dents\" /> -->\n    <div id=\"speedLive\"></div>\n  <button id=\"startButton\" class=\"start-button\">Test the Future</button>\n\n   <!---- <button id=\"startButton\">Test the future</button>-->\n  </div>\n\n<div class=\"stats-panel-wrapper\">\n  <img src=\"images/stats-panel.png\" alt=\"Performance Stats\" class=\"stats-panel-img\" />"
+  },
+  {
+    "file": "frontend/script.js",
+    "matches": {
+      "fetch_calls": [
+        "fetch(\"http://localhost:3000/speedtest\")"
+      ],
+      "http_urls": [
+        "http://localhost:3000/speedtest"
+      ]
+    },
+    "head": "const maxSpeed = 2000;\nconst tickCount = 11;\nconst startAngle = 225;\nconst endAngle = 495;\nconst totalAngle = endAngle - startAngle;\n\n  \n\nconst gaugeSize = 500;\nconst centerX = gaugeSize / 2;\nconst centerY = gaugeSize / 2;\nconst radius = 200;\n\nconst scaleContainer = document.createElement(\"div\");\nscaleContainer.className = \"gauge-scale\";\ndocument.querySelector(\".gauge-container\").appendChild(scaleContainer);\nscaleContainer.innerHTML = \"\";\n\nfor (let i = 0; i < tickCount; i++) {\n  const mbps = i * (maxSpeed / (tickCount - 1));\n  const angleDeg = startAngle + (mbps / maxSpeed) * totalAngle;\n  const rad = (angleDeg - 90) * (Math.PI / 180);\n  const x = centerX + radius * Math.cos(rad);\n  const y = centerY + radius * Math.sin(rad);\n\n  const tick = document.createElement(\"div\");\n  tick.className = \"tick\";\n  tick.textContent = `${mbps.toFixed(0)}`;\n  tick.style.position = \"absolute\";\n  tick.style.left = `${(x / gaugeSize) * 100}%`;"
+  }
+]

@@ -1,0 +1,21 @@
+frontend_zip_unzipped/
+    manifest.csv
+    frontend/
+        index.html
+        script.js
+        style.css
+        fonts/
+            ppneuemontreal-bold.otf
+            ppneuemontreal-book.otf
+            ppneuemontreal-italic.otf
+            ppneuemontreal-medium.otf
+            ppneuemontreal-semibolditalic.otf
+            ppneuemontreal-thin.otf
+        images/
+            BG.png
+            StartB.png
+            favicon.jpg
+            favicon.png
+            gauge.png
+            needle.png
+            stats-panel.png
